@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>Cadastro de Pacientes</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" th:href="@{/materialize/css/materialize.min.css}"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" th:href="@{/style/style.css}"/>
+</head>
+<body>
+	
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo" style="padding-left: 10px;">Detalhe de Paciente</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		      	<li><a href="/pacientes" class="waves-effect btn"><i class="material-icons left">chrome_reader_mode</i>Lista de pacientes</a></li>
+		        <li><a href="/cadastrarPaciente" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Cadastrar paciente</a></li>
+		      </ul>
+		    </div>
+		</nav>
+	</header>
+	
+	<th:block th:include="mensagemValidacao"></th:block>
+	<div class="container formCadastro">
+	
+	<form class="container" method="post" th:object="${paciente}">
+		Nome <input type="text" th:field="*{nome}" name="nome"/>
+		<div class="row">
+			
+			<div class="input-field col s6">
+				Sexo <input type="text" th:field="*{sexo}" name="sexo" />
+			</div>
+			<div class="input-field col s6">
+				CPF <input type="text" th:field="*{cpf}" name="cpf" 
+							title="Digite um CPF no formato: xxx.xxx.xxx-xx" 
+							pattern="(\d{3}\.?\d{3}\.?\d{3}-?\d{2})|(\d{2}\.?\d{3}\.?\d{3}/?\d{4}-?\d{2})"/>
+			</div>
+		</div>
+
+        <div class="row">
+            <div class="input-field col s4">
+                Email <input class="validate" type="email" th:field="*{email}" name="email"/>
+                <span class="helper-text" data-error="Errado" data-success="Correto"></span>
+            </div>
+
+            <div class="input-field col s4">
+                Celular <input class="validate" type="tel" th:field="*{celular}" name="celular"/>
+            </div>
+            <div class="input-field col s4">
+				Data de nascimento <input type="date" th:field="*{dataNascimento}" name="dataNascimento"/>
+			</div>
+        </div>
+        <div class="row">
+            <div class="input-field col s5">
+                Rua <input type="text" th:field="*{rua}" name="rua"/>
+            </div>
+            <div class="input-field col s2">
+                Nº <input  type="text" th:field="*{numero}" name="numero"/>
+            </div>
+            <div class="input-field col s5">
+                Bairro <input  type="text" th:field="*{bairro}" name="bairro"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                Cidade <input  type="text" th:field="*{cidade}" name="cidade"/>
+            </div>
+            <div class="input-field col s6">
+                Estado <input  type="text" th:field="*{estado}" name="estado"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                Queixa principal (QP)/Motivo da avaliação <input type="text" th:field="*{motivoAvaliacao}" name="motivoAvaliacao"/>
+            </div>
+            <div class="input-field col s6">
+                História da doença atual (HDA) <input type="text" th:field="*{historiaDoencaAtual}" name="historiaDoencaAtual"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                História médica pregressa (HMP) <input type="text" th:field="*{historiaMedicaPreg}" name="historiaMedicaPreg"/>
+            </div>
+            <div class="input-field col s6">
+                Medicamentos em uso <input type="text" th:field="*{medicamentosUso}" name="medicamentosUso"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                Histórico familiar <input type="text" th:field="*{historicoFamiliar}" name="historicoFamiliar"/>
+            </div>
+            <div class="input-field col s6">
+                Observações <input type="text" th:field="*{observacoes}" name="observacoes"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-field col s6">
+                Anexar arquivos <input type="file" value="" multiple/>
+            </div>
+        </div>
+        <button class="waves-effect waves-light btn" type="submit">Atualizar</button>
+        </form>
+        </div>
+	
+	
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" th:src="@{/materialize/js/materialize.min.js}"></script>
+
+</body>
+
+
+</html>
+	
